@@ -1,4 +1,5 @@
 <script>
+  const name = "Note Trainer";
   let notes = ["A", "B", "C"];
   let note = selectNote();
   let key = undefined;
@@ -16,11 +17,12 @@
 
 <svelte:window on:keypress={handleKeyPress} />
 
-<p>
-  Play {note}
-</p>
-
-<p>pressed {key}</p>
+<div>
+  <h2>{name}</h2>
+  <p>
+    Play {note}
+  </p>
+</div>
 
 <style>
   p {
