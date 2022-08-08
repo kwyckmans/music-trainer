@@ -1,5 +1,12 @@
 <script>
+  import Container from "$lib/Container.svelte";
+  import Sidebar from "$lib/Sidebar.svelte";
   import "../app.scss";
+
+  const sidebarWidth = "150px";
 </script>
 
-<slot />
+<Sidebar --width={sidebarWidth} />
+<Container --sidebar-width={sidebarWidth}>
+  <slot />
+</Container>
