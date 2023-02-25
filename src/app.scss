@@ -1,34 +1,77 @@
-/* Write your global styles here, in SCSS syntax. Variables and mixins from the src/variables.scss file are available here without importing */ /* Import only what you need from Bootstrap */
-@import "bootstrap/scss/root";
-@import "bootstrap/scss/reboot";
-@import "bootstrap/scss/type";
-@import "bootstrap/scss/images";
-@import "bootstrap/scss/containers";
-@import "bootstrap/scss/grid";
-@import "bootstrap/scss/tables";
-@import "bootstrap/scss/forms";
-@import "bootstrap/scss/buttons";
-@import "bootstrap/scss/transitions";
-@import "bootstrap/scss/dropdown";
-@import "bootstrap/scss/button-group";
-@import "bootstrap/scss/nav";
-@import "bootstrap/scss/navbar";
-@import "bootstrap/scss/card";
-@import "bootstrap/scss/accordion";
-@import "bootstrap/scss/breadcrumb";
-@import "bootstrap/scss/pagination";
-@import "bootstrap/scss/badge";
-@import "bootstrap/scss/alert";
-@import "bootstrap/scss/progress";
-@import "bootstrap/scss/list-group";
-@import "bootstrap/scss/close";
-@import "bootstrap/scss/toasts";
-@import "bootstrap/scss/modal";
-@import "bootstrap/scss/tooltip";
-@import "bootstrap/scss/popover";
-@import "bootstrap/scss/carousel";
-@import "bootstrap/scss/spinners";
-@import "bootstrap/scss/offcanvas";
-@import "bootstrap/scss/placeholders";
-@import "bootstrap/scss/helpers";
-@import "bootstrap/scss/utilities/api";
+/* Write your global styles here, in SCSS syntax. Variables and mixins from the src/variables.scss file are available here without importing */ 
+
+// CSS Reset taken from https://andy-bell.co.uk/a-modern-css-reset/
+/* Box sizing rules */
+// *,
+// *::before,
+// *::after {
+//   box-sizing: border-box;
+// }
+
+// /* Remove default margin */
+// body,
+// h1,
+// h2,
+// h3,
+// h4,
+// p,
+// figure,
+// blockquote,
+// dl,
+// dd {
+//   margin: 0;
+// }
+
+// /* Remove list styles on ul, ol elements with a list role, which suggests default styling will be removed */
+// ul[role='list'],
+// ol[role='list'] {
+//   list-style: none;
+// }
+
+// /* Set core root defaults */
+// html:focus-within {
+//   scroll-behavior: smooth;
+// }
+
+// /* Set core body defaults */
+// body {
+//   min-height: 100vh;
+//   text-rendering: optimizeSpeed;
+//   line-height: 1.5;
+// }
+
+// /* A elements that don't have a class get default styles */
+// a:not([class]) {
+//   text-decoration-skip-ink: auto;
+// }
+
+// /* Make images easier to work with */
+// img,
+// picture {
+//   max-width: 100%;
+//   display: block;
+// }
+
+// /* Inherit fonts for inputs and buttons */
+// input,
+// button,
+// textarea,
+// select {
+//   font: inherit;
+// }
+
+// // My own default styles   
+
+// body {
+//   font-family: $default-font;
+//   font-size: 1.2rem;
+// //   color: $text-color;
+// //   background-color: $bg-color;
+// }
+
+$primary-500: #ff5722;
+$primary-600: #f4511e;
+$primary-700: #e64a19;
+
+// Import Pico
+@import "@picocss/pico/scss/pico";

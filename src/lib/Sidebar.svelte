@@ -4,36 +4,25 @@
 </script>
 
 <div class="sidebar">
-  <ul class="nav justify-content-center nav-fill">
-    <li class="nav-item">
-      <a href="/" class="nav-link" class:active={$page.url.pathname === "/"}>
-        Practice
-      </a>
+  <ul role="navigation">
+    <li>
+      <a href="/" class:active={$page.url.pathname === "/"}> Practice </a>
     </li>
-    <li class="nav-item">
-      <a
-        href="/exercises"
-        class="nav-link"
-        class:active={$page.url.pathname === "/exercises"}
-      >
+    <li>
+      <a href="/exercises" class:active={$page.url.pathname === "/exercises"}>
         Exercises
       </a>
     </li>
-    <li class="nav-item">
-      <a
-        href="/routines"
-        class="nav-link"
-        class:active={$page.url.pathname === "/routines"}
-      >
+    <li>
+      <a href="/routines" class:active={$page.url.pathname === "/routines"}>
         Routines
       </a>
     </li>
-    <li class="nav-item">
-      <a
-        href="/settings"
-        class="nav-link"
-        class:active={$page.url.pathname === "/settings"}
-      >
+    <li>
+      <a href="/songbook" class:active={$page.url.pathname === "/songbook"}>Songbook</a>
+    </li>
+    <li>
+      <a href="/settings" class:active={$page.url.pathname === "/settings"}>
         Settings
       </a>
     </li>
@@ -44,37 +33,46 @@
   .sidebar {
     width: var(--width);
     height: 100%;
-    background-color: #333;
+    background-color: #FBFBFA;
     position: fixed;
     transition: 0.5s;
   }
 
-  /* .sidebar ul {
-    list-style: none;
+  .sidebar ul li a:hover {
+    background-color: #f1f1f0;
+    color:#e64a19;
+    /* color: #333; */
+  }
+
+  .sidebar ul li a.active {
+    background-color: #f1f1f0;
+    color: #e64a19;
+    /* color: #333; */
+  }
+
+  ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    color: rgb(55, 53, 47);
+
+  }
+  
+  li {
+    text-align: center;
     padding: 0;
     margin: 0;
-  }
-  .sidebar ul li {
-    padding: 10px;
-    margin: 0;
-    border-bottom: 1px solid #333;
-  } */
+    color: rgb(55, 53, 47);
 
-  /* .sidebar ul li a {
-    color: white;
-    text-decoration: none;
-     
+  }
+
+  a {
     display: block;
-  }
-  */
-  .sidebar ul li a:hover {
-    background-color: #fff;
-    color: #333;
-  } 
+    padding: 16px;
+    text-decoration: none;
+    /* color: #333; */
+    color: rgb(55, 53, 47);
 
-  
-  .sidebar ul li a.active {
-    background-color: #fff;
-    color: #333;
   }
 </style>

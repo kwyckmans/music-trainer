@@ -1,4 +1,6 @@
 <script>
+  // import "@picocss/pico/css/pico.css";
+
   import Container from "$lib/Container.svelte";
   import Sidebar from "$lib/Sidebar.svelte";
   import "../app.scss";

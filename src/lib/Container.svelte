@@ -1,12 +1,13 @@
 <script lang="ts">
 </script>
 
-<div class="container content">
+<main class="content">
     <slot />
-</div>
+</main >
 
 <style>
     .content {
       margin-left: var(--sidebar-width);
+      padding-left: 1rem;
     }
 </style>
