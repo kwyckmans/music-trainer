@@ -34,8 +34,11 @@
     width: var(--width);
     height: 100%;
     background-color: #FBFBFA;
+    /* background-color: red; */
     position: fixed;
     transition: 0.5s;
+    margin: 0;
+    padding: 0;
   }
 
   .sidebar ul li a:hover {

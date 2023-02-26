@@ -1,4 +1,4 @@
-/* Write your global styles here, in SCSS syntax. Variables and mixins from the src/variables.scss file are available here without importing */ 
+/* Write your global styles here, in SCSS syntax. Variables and mixins from the src/variables.scss file are available here without importing */
 
 // CSS Reset taken from https://andy-bell.co.uk/a-modern-css-reset/
 /* Box sizing rules */
@@ -72,6 +72,22 @@
 $primary-500: #ff5722;
 $primary-600: #f4511e;
 $primary-700: #e64a19;
+$semantic-root-element: "div#pico-root";
+
+body {
+    margin: 0;
+}
+
+// :root {
+//     --font-family: "Open Sans", sans-serif;
+//     --border-radius: 0;
+//     --form-element-spacing-vertical: 1rem;
+//     --form-element-spacing-horizontal: 1.25rem;
+// }
+
+// body {
+//     --font-size: 0.4rem;
+// }
 
 // Import Pico
 @import "@picocss/pico/scss/pico";
