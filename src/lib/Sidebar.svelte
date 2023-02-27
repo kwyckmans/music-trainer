@@ -42,14 +42,14 @@
   }
 
   .sidebar ul li a:hover {
-    background-color: #f1f1f0;
-    color:#e64a19;
+    background-color: var(--primary-hover);
+    color: var(--primary-inverse);
     /* color: #333; */
   }
 
   .sidebar ul li a.active {
-    background-color: #f1f1f0;
-    color: #e64a19;
+    background-color: var(--primary-hover);
+    color: var(--primary-inverse);
     /* color: #333; */
   }
 
@@ -58,7 +58,7 @@
     margin: 0;
     padding: 0;
     width: 100%;
-    color: rgb(55, 53, 47);
+    /* color: rgb(55, 53, 47); */
 
   }
   

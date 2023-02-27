@@ -1,8 +1,33 @@
 <script lang="ts">
-    import type { Song } from "./song";
+    import { Song } from "./song";
     import { Difficulty } from "./song";
+    import { PlusCircle } from "phosphor-svelte";
+    import { clickOutside } from "../onclickoutside";
 
     export let songs: Song[] = [];
+
+    function handleAddElement() {
+        console.log("Adding empty song");
+        songs = [
+            ...songs,
+            new Song(
+                "",
+                "",
+                [],
+                Difficulty.Undecided,
+                new URL(
+                    "https://tabs.ultimate-guitar.com/tab/the-cranberries/zombie-chords-844902"
+                )
+            ),
+        ];
+    }
+
+    function handleClickOutside() {
+        console.log("Clicked outside");
+        editTitle = false;
+    }
+
+    let editTitle = false;
 </script>
 
 <div>
@@ -19,7 +44,20 @@
         <tbody>
             {#each songs as song}
                 <tr>
-                    <td>{song.title}</td>
+                    <td>
+                        {#if editTitle}
+                            <input
+                                type="text"
+                                use:clickOutside
+                                on:clickoutside={handleClickOutside}
+                                bind:value={song.title}
+                            />
+                        {:else}
+                            <td on:click={() => (editTitle = true)}
+                                >{song.title}</td
+                            >
+                        {/if}
+                    </td>
                     <td>{song.artist}</td>
                     <td
                         >{#each song.tags as tag}
@@ -30,14 +68,32 @@
                     <td><a href={song.tab.toString()}>Link</a></td>
                 </tr>
             {/each}
+            <tr>
+                <td colspan="5" class="add-element" on:click={handleAddElement}
+                    ><PlusCircle color="#ccc" weight="light" />
+                    <small>Add</small></td
+                >
+            </tr>
         </tbody>
-        <tfoot>
+        <!-- <tfoot>
             <tr>
                 <td><button>Add</button></td>
             </tr>
-        </tfoot>
+        </tfoot> -->
     </table>
 </div>
 
 <style>
+    .add-element {
+        cursor: pointer;
+    }
+
+    /* .add-element:hover {
+        color: #e64a19;
+    } */
+
+    tr .add-element:hover {
+        background-color: var(--primary-focus);
+        color: var(--primary-inverse);
+    }
 </style>
