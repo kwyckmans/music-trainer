@@ -44,20 +44,20 @@
         <tbody>
             {#each songs as song}
                 <tr>
-                    <td>
-                        {#if editTitle}
+                    {#if editTitle}
+                        <td>
                             <input
                                 type="text"
                                 use:clickOutside
                                 on:clickoutside={handleClickOutside}
                                 bind:value={song.title}
                             />
-                        {:else}
-                            <td on:click={() => (editTitle = true)}
-                                >{song.title}</td
-                            >
-                        {/if}
-                    </td>
+                        </td>
+                    {:else}
+                        <td on:click={() => (editTitle = true)}>{song.title}</td
+                        >
+                    {/if}
+
                     <td>{song.artist}</td>
                     <td
                         >{#each song.tags as tag}
