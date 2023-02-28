@@ -44,27 +44,18 @@
         <tbody>
             {#each songs as song}
                 <tr>
-                    {#if editTitle}
-                        <td>
-                            <input
-                                type="text"
-                                use:clickOutside
-                                on:clickoutside={handleClickOutside}
-                                bind:value={song.title}
-                            />
-                        </td>
-                    {:else}
-                        <td on:click={() => (editTitle = true)}>{song.title}</td
-                        >
-                    {/if}
+                    <td contenteditable="true" bind:textContent={song.title} />
 
-                    <td>{song.artist}</td>
-                    <td
-                        >{#each song.tags as tag}
+                    <td contenteditable="true">{song.artist}</td>
+                    <td>
+                        <!-- Make this a component (or do it here) that on an OnClick Event I just add a new mark that can be edited. If mark is empty, remove it, otherwise store it. -->
+                        {#each song.tags as tag}
                             <mark> {tag} </mark>
                         {/each}</td
                     >
+                    <!-- Should be a dropdown on click-->
                     <td>{Difficulty[song.difficulty]}</td>
+                    <!-- Should be a link. So should make sure it's a valid url. -->
                     <td><a href={song.tab.toString()}>Link</a></td>
                 </tr>
             {/each}
@@ -95,5 +86,21 @@
     tr .add-element:hover {
         background-color: var(--primary-focus);
         color: var(--primary-inverse);
+    }
+
+    table {
+        table-layout: fixed;
+    }
+
+    td {
+        caret-color: var(--primary-hover);
+        /* width: 100px; */
+        overflow: hidden;
+    }
+
+    td:focus {
+        outline: 1px solid var(--primary-hover);
+        /* background-color: var(--primary-focus); */
+        /* color: var(--primary-inverse); */
     }
 </style>
