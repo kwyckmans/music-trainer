@@ -15,6 +15,13 @@
                     1,
                     new URL("https://tabs.ultimate-guitar.com/tab/the-cranberries/zombie-chords-844902")
                 ),
+                new Song(
+                    "Live Forever",
+                    "Oasis",
+                    ["rock", "alternative"],
+                    2,
+                    new URL("https://tabs.ultimate-guitar.com/tab/oasis/live-forever-chords-1010000")
+                )
             ]}
         />
     </div>
