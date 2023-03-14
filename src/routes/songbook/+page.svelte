@@ -11,7 +11,7 @@
                 new Song(
                     "Zombie",
                     "The Cranberries",
-                    ["rock", "alternative"],
+                    ["rock", "alternative", "irish", "solo", "acoustic"],
                     1,
                     new URL("https://tabs.ultimate-guitar.com/tab/the-cranberries/zombie-chords-844902")
                 ),

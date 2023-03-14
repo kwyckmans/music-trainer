@@ -8,6 +8,12 @@
 
     let difficultyDropdownOpen: boolean[] = songs.map(() => false);
 
+    let addTagOpen: boolean[] = songs.map(() => false);
+
+    const handleAddTagClick = (i: number) => {
+        console.log("Clicked add tag");
+        addTagOpen[i] = !addTagOpen[i];
+    };
 
     // Inspired by https://svelte.dev/repl/4c5dfd34cc634774bd242725f0fc2dab?version=3.46.4
     const handleDropdownClick = (i: number) => {
@@ -50,6 +56,18 @@
     }
 
     let editTitle = false;
+    let newTag = "";
+
+    function addTagToSong(i: number) {
+        addTagOpen[i] = false;
+
+        if (newTag === "") {
+            return;
+        }
+        console.log("Adding tag to song");
+        songs[i].tags = songs[i].tags.concat(newTag);
+        newTag = "";
+    }
 </script>
 
 <div>
@@ -71,12 +89,26 @@
                     <td contenteditable="true" bind:textContent={song.artist}
                         >{song.artist}</td
                     >
-                    <td>
-                        <!-- Make this a component (or do it here) that on an OnClick Event I just add a new mark that can be edited. If mark is empty, remove it, otherwise store it. -->
-                        {#each song.tags as tag}
-                            <mark> {tag} </mark>
-                        {/each}</td
-                    >
+                    {#if addTagOpen[i]}
+                        <td>
+                            {#each song.tags as tag}
+                                <mark> {tag} </mark>
+                            {/each}
+                            <mark
+                                contenteditable="true"
+                                bind:textContent={newTag}
+                                on:blur={() => addTagToSong(i)}
+                            />
+                        </td>
+                    {:else}
+                        <td on:click={() => handleAddTagClick(i)}>
+                            {#each song.tags as tag}
+                                <mark> {tag} </mark>
+                            {/each}
+                        </td>
+                    {/if}
+                    <!-- Make this a component (or do it here) that on an OnClick Event I just add a new mark that can be edited. If mark is empty, remove it, otherwise store it. -->
+
                     <!-- Should be a dropdown on click-->
                     {#if difficultyDropdownOpen[i]}
                         <!-- svelte-ignore a11y-click-events-have-key-events -->
@@ -101,6 +133,7 @@
                         </td>
                     {:else}
                         <!-- svelte-ignore a11y-click-events-have-key-events -->
+                        <!-- See https://svelte.dev/tutorial/inline-handlers for why we wrap the event in another method -->
                         <td on:click={() => handleDropdownClick(i)}
                             >{Difficulty[song.difficulty]}</td
                         >
@@ -148,12 +181,6 @@
         overflow: hidden;
     }
 
-    td:focus {
-        outline: 1px solid var(--primary-hover);
-        /* background-color: var(--primary-focus); */
-        /* color: var(--primary-inverse); */
-    }
-
     .dropdown {
         /* background-color: var(--primary-focus); */
         /* color: var(--primary-inverse); */
@@ -164,5 +191,20 @@
         padding: 0;
         margin: 0;
         font-size: inherit;
+    }
+
+    mark {
+        /* background-color: var(--primary-focus);
+        color: var(--primary-inverse); */
+        /* padding: 0.2em; */
+        margin: 0.2em;
+    }
+
+    [contenteditable="true"]:focus {
+        outline: 1px solid var(--primary-hover);
+    }
+
+    mark[contenteditable="true"] {
+        margin: 0.2em;
     }
 </style>
