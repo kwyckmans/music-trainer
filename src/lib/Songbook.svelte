@@ -1,14 +1,15 @@
 <script lang="ts">
+    import { songbook } from "./Stores/songbook";
     import { Song } from "./song";
     import { Difficulty } from "./song";
     import { PlusCircle } from "phosphor-svelte";
     // import { clickOutside } from "../onclickoutside";
 
-    export let songs: Song[] = [];
+    // export let songs: Song[] = [];
 
-    let difficultyDropdownOpen: boolean[] = songs.map(() => false);
+    let difficultyDropdownOpen: boolean[] = $songbook.map(() => false);
 
-    let addTagOpen: boolean[] = songs.map(() => false);
+    let addTagOpen: boolean[] = $songbook.map(() => false);
 
     const handleAddTagClick = (i: number) => {
         console.log("Clicked add tag");
@@ -36,18 +37,25 @@
 
     function handleAddElement() {
         console.log("Adding empty song");
-        songs = [
-            ...songs,
-            new Song(
-                "",
-                "",
-                [],
-                Difficulty.Undecided,
-                new URL(
-                    "https://tabs.ultimate-guitar.com/tab/the-cranberries/zombie-chords-844902"
-                )
-            ),
-        ];
+        $songbook = [...$songbook, new Song(
+            "",
+            "",
+            [],
+            Difficulty.Undecided,
+            new URL("https://tabs.ultimate-guitar.com/tab/the-cranberries/zombie-chords-844902")
+        )];
+        // songs = [
+        //     ...songs,
+        //     new Song(
+        //         "",
+        //         "",
+        //         [],
+        //         Difficulty.Undecided,
+        //         new URL(
+        //             "https://tabs.ultimate-guitar.com/tab/the-cranberries/zombie-chords-844902"
+        //         )
+        //     ),
+        // ];
     }
 
     function handleClickOutside() {
@@ -65,7 +73,7 @@
             return;
         }
         console.log("Adding tag to song");
-        songs[i].tags = songs[i].tags.concat(newTag);
+        $songbook[i].tags = $songbook[i].tags.concat(newTag);
         newTag = "";
     }
 </script>
@@ -82,7 +90,7 @@
             </tr>
         </thead>
         <tbody>
-            {#each songs as song, i}
+            {#each $songbook as song, i}
                 <tr>
                     <td contenteditable="true" bind:textContent={song.title} />
 
