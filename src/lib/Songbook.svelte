@@ -3,6 +3,18 @@
     import { Song } from "./song";
     import { Difficulty } from "./song";
     import { PlusCircle } from "phosphor-svelte";
+    import { onMount, onDestroy } from "svelte";
+    // import { getDatabase, closeDatabase } from "$lib/db/sqlite";
+    // let db: SQLite.oo1.DB;
+
+    // onMount(async () => {
+    //     db = await getDatabase();
+    //     // Perform database operations using the `db` object
+    // });
+
+    // onDestroy(async () => {
+    //     await closeDatabase();
+    // });
     // import { clickOutside } from "../onclickoutside";
 
     // export let songs: Song[] = [];
@@ -23,7 +35,7 @@
 
     const handleDropdownFocusLoss = (
         dropdownIndex: number,
-        event: FocusEvent
+        event: FocusEvent,
     ) => {
         console.log("Focus lost");
         // use "focusout" event to ensure that we can close the dropdown when clicking outside or when we leave the dropdown with the "Tab" button
@@ -37,13 +49,18 @@
 
     function handleAddElement() {
         console.log("Adding empty song");
-        $songbook = [...$songbook, new Song(
-            "",
-            "",
-            [],
-            Difficulty.Undecided,
-            new URL("https://tabs.ultimate-guitar.com/tab/the-cranberries/zombie-chords-844902")
-        )];
+        $songbook = [
+            ...$songbook,
+            new Song(
+                "",
+                "",
+                [],
+                Difficulty.Undecided,
+                new URL(
+                    "https://tabs.ultimate-guitar.com/tab/the-cranberries/zombie-chords-844902",
+                ),
+            ),
+        ];
         // songs = [
         //     ...songs,
         //     new Song(
@@ -132,7 +149,7 @@
                             >
                                 {#each Object.keys(Difficulty).filter( (item) => {
                                         return isNaN(Number(item));
-                                    } ) as difficulty}
+                                    }, ) as difficulty}
                                     <option value={Difficulty[difficulty]}>
                                         {difficulty}
                                     </option>
